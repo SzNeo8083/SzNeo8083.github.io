@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="fent.win">
+    <meta content="#00bbff" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+</head>
+
+<body>
+    <audio loop preload="auto" id="audio" src="audio.mp3" type="audio/mp3"></audio>
+
+    <div id="clickoverlay">
+        <div id="overlay-content">
+            <span>click to enter</span>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+    <script src="title.js"></script>
+    <div id="panel">
+        <div id="content">
+            <img src="pic.png" alt="image">
+            <span>
+                <gradient>fentanyl.win</gradient>
+            </span>
+
+            <span class="infotext">
+                What are you waiting for? <div style="display: inline; font-weight: 800;">Join us today.</div>
+            </span>
+            
+            <span>
+                <a href="1">Discord</a>
+                 / 
+                <a href="1">Youtube</a>
+                 / 
+                <a href="1">Devlog</a>
+                / 
+                <a href="1">Status</a>
+            </span>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("clickoverlay").addEventListener("click", function () {
+            this.classList.add("hide");
+            document.getElementById("audio").play();
+        });
+    </script>
+</body>
+
+</html>
