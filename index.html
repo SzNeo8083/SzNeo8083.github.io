@@ -14,7 +14,11 @@
 </head>
 
 <body>
-    <audio loop preload="auto" id="audio" src="audio.mp3" type="audio/mp3"></audio>
+    <audio loop preload="auto" id="audio" src="./assets/main/audio.mp3" type="audio/mp3"></audio>
+    <video autoplay muted loop id="myVideo"> <!-- Video background -->
+        <source src="./assets/main/default.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
 
     <div id="clickoverlay">
         <div id="overlay-content">
@@ -22,12 +26,14 @@
         </div>
     </div>
 
-
-    <script src="app.js"></script>
-    <script src="title.js"></script>
+    <div id="particles-js"></div>
+    <script src="./assets/js/particles.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/dev.js"></script>
+    <script src="./assets/js/title.js"></script>
     <div id="panel">
         <div id="content">
-            <img src="pic.png" alt="image">
+            <img src="./assets/main/pic.png" alt="image">
             <span>
                 <gradient>fentanyl.win</gradient>
             </span>
@@ -41,7 +47,7 @@
                  / 
                 <a href="./soon">Youtube</a>
                  / 
-                <a href="./soon">Devlog</a>
+                <a href="./devlog">Devlog</a>
                 / 
                 <a href="./status">Status</a>
             </span>

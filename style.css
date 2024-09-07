@@ -69,7 +69,25 @@ body {
     text-shadow: 1px 1px 8px #cd28ff;
 }
 
-  
+#panel gradientDevlog {
+    background: linear-gradient(90deg, #C50753, #ff69f3, #C50753, #e270ff, #C50753);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow_animation 6s ease-in-out infinite;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    animation-fill-mode: forwards;
+    background-size: 400% 100%;
+    text-shadow: 1px 1px 8px #cd28ff;
+}
+
+
+
+#added-info, #removed-info {
+    text-align: center; /* Centers text horizontally */
+    margin: 0 auto; /* Centers the element itself if it's a block-level element */
+}
+
   
 
 #panel img {
@@ -107,11 +125,79 @@ body {
 
 .infotext {
     margin-bottom: 8px;
+    margin-top: 8px;
 }
 
-.statustext {
-    margin-bottom: 1px;
+.devlogtext {
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
+
+.added::before {
+    content: " + "; /* Add a space after the "+" for spacing */
+    color: #33ff00;
+    text-shadow: 1px 1px 8px #33ff00;   /* Set the color of the "+" */
+}
+
+.removed::before {
+    content: " - "; /* Add a space after the "+" for spacing */
+    color: #ff0000;
+    text-shadow: 1px 1px 8px #ff0000;   /* Set the color of the "+" */
+}
+
+.updated::before {
+    content: " # "; /* Add a space after the "+" for spacing */
+    color: #ffee00;
+    text-shadow: 1px 1px 8px #fffb00;   /* Set the color of the "+" */
+}
+  
+
+#content .statustext {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+
+
+#content .status {
+    margin-left: 10px;
+    text-shadow: 1px 1px 8px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#content .status.undetected {
+    color: #00ff6a;
+    text-shadow: 1px 1px 8px #4cff28;
+}
+
+#content .status.development {
+    color: #cd28ff;
+    text-shadow: 1px 1px 8px #cd28ff;
+}
+
+#content .status.detected {
+    color: #ff0000;
+    text-shadow: 1px 1px 8px #ff0000;
+}
+
+#content .status.not-working {
+    color: #555555;
+    text-shadow: 1px 1px 8px #000000;
+}
+
+#content .status.risky {
+    color: #ffd700;
+    text-shadow: 1px 1px 8px #ffd700;
+}
+
+#content .statustext:hover .status {
+    color: #ffffff;
+    text-shadow: 1px 1px 8px #ffffff;
+}
+
+
+
 
 img[alt*="000webhost"],
 img[alt*="000webhost"][style],
