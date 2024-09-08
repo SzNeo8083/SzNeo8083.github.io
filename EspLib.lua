@@ -1,65 +1,102 @@
 local player    = game:GetService("Players").LocalPlayer
 local camera    = game:GetService("Workspace").CurrentCamera
-local HttpService =  cloneref(game:GetService("HttpService"))
 
+if isfile("menu_plex.font") then
+    delfile("menu_plex.font")
+end
 
+writefile("ProggyClean.ttf", game:HttpGet("https://github.com/f1nobe7650/other/raw/main/ProggyClean.ttf"))
+
+do
+    getsynasset = getcustomasset or getsynasset
+    Font = setreadonly(Font, false);
+    function Font:Register(Name, Weight, Style, Asset)
+        if not isfile(Name .. ".font") then
+            if not isfile(Asset.Id) then
+                writefile(Asset.Id, Asset.Font);
+            end
+            local Data = {
+                name = Name,
+                faces = {{
+                    name = "Regular",
+                    weight = Weight,
+                    style = Style,
+                    assetId = getsynasset(Asset.Id);
+                }}
+            }
+            writefile(Name .. ".font", game:GetService("HttpService"):JSONEncode(Data))
+            return getsynasset(Name .. ".font")
+        else 
+            warn("Font already registered")
+        end
+    end
+    function Font:GetRegistry(Name)
+        if isfile(Name .. ".font") then
+            return getsynasset(Name .. ".font")
+        end
+    end
+
+    Font:Register("menu_plex", 400, "normal", {Id = "ProggyClean.ttf", Font = ""})
+end
+
+local realfont = Font.new(Font:GetRegistry("menu_plex"))
 
 
 local espvars = {
     enemy = {
-        enabled = true,
-        boxEsp = false,
+        enabled = nil,
+        boxEsp = nil,
         boxEspColor = Color3.fromRGB(255, 255, 255),
         boxOutlineColor = Color3.fromRGB(0, 0, 0),
-        healthBar = true,
+        healthBar = nil,
         healthBarColor = Color3.fromRGB(148, 255, 98),
         healthBarOutlineColor = Color3.fromRGB(0, 0, 0),
-        healthBarGradient = true,
+        healthBarGradient = nil,
         healthBarGradientColor1 = Color3.fromRGB(0, 255, 0),
         healthBarGradientColor2 = Color3.fromRGB(255, 0, 0),
-        healthText = true,
+        healthText = nil,
         healthTextColor = Color3.fromRGB(255, 255, 2552),
         healthTextOutlineColor = Color3.fromRGB(0, 0, 0),
-        userText = true,
+        userText = nil,
         userTextColor = Color3.fromRGB(255, 255, 255),
         userTextOutlineColor = Color3.fromRGB(0, 0, 0),
-        distanceText = true,
+        distanceText = nil,
         distanceTextColor = Color3.fromRGB(255, 255, 255),
         distanceTextOutlineColor = Color3.fromRGB(0, 0, 0),
-        weaponText = false,
+        weaponText = nil,
         weaponTextColor = Color3.fromRGB(255, 255, 255),
         weaponTextOutlineColor = Color3.fromRGB(0, 0, 0),
-        fontSize = 13,
-        fontFamily = "10" , --Code, RobotoMono, Plex, System & Arcade
-        skele = false,
+        fontSize = nil,
+        fontFamily = "nil" , --Code, RobotoMono, Plex, System & Arcade
+        skele = nil,
         skeleColor = Color3.fromRGB(255, 255, 255),
         skeleOutlineColor = Color3.fromRGB(0, 0, 0),
 
     },
     team = {
-        enabled = false,
-        boxEsp = true,
+        enabled = nil,
+        boxEsp = nil,
         boxEspColor = Color3.fromRGB(117, 138, 255),
         boxOutlineColor = Color3.fromRGB(0, 0, 0),
-        healthBar = true,
+        healthBar = nil,
         healthBarColor = Color3.fromRGB(250, 98, 255),
         healthBarOutlineColor = Color3.fromRGB(0, 0, 0),
-        healthBarGradient = true,
-        healthText = true,
+        healthBarGradient = nil,
+        healthText = nil,
         healthTextColor = Color3.fromRGB(255, 255, 2552),
         healthTextOutlineColor = Color3.fromRGB(0, 0, 0),
-        userText = true,
+        userText = nil,
         userTextColor = Color3.fromRGB(255, 255, 255),
         userTextOutlineColor = Color3.fromRGB(0, 0, 0),
-        distanceText = true,
+        distanceText = nil,
         distanceTextColor = Color3.fromRGB(255, 255, 255),
         distanceTextOutlineColor = Color3.fromRGB(0, 0, 0),
-        weaponText = true,
+        weaponText = nil,
         weaponTextColor = Color3.fromRGB(255, 255, 255),
         weaponTextOutlineColor = Color3.fromRGB(0, 0, 0),
         fontSize = 13,
         fontFamily = "10", --Code, RobotoMono, Plex, System & Arcade
-        skele = false,
+        skele = nil,
         skeleColor = Color3.fromRGB(255, 255, 255),
         skeleOutlineColor = Color3.fromRGB(0, 0, 0),
     }
@@ -110,23 +147,27 @@ local function ESP(plr)
     healthText.Center = true 
     healthText.Outline = true 
     healthText.Visible = false 
+    healthText.FontFace = realfont
 
 
     local nameTag = Drawing.new("Text")
     nameTag.Center = true 
     nameTag.Outline = true 
     nameTag.Visible = false 
+    nameTag.FontFace = realfont
 
     local distanceTag = Drawing.new("Text")
     distanceTag.Center = true 
     distanceTag.Outline = true 
     distanceTag.Visible = false 
+    distanceTag.FontFace = realfont
    
 
     local WeaponTag = Drawing.new("Text")
     WeaponTag.Center = true 
     WeaponTag.Outline = true 
     WeaponTag.Visible = false 
+    WeaponTag.FontFace = realfont
 
     local function Updater()
         local connection
@@ -247,6 +288,7 @@ local function ESP(plr)
                             nameTag.Visible     = false
                             boxOutline.Visible  = false
                             boxFrame.Visible    = false
+                            WeaponTag.Visible   = false
                         end
 
                     -- enemy esp
