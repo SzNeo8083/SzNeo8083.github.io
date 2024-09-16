@@ -50,7 +50,7 @@ local Library = {};
 do
 	Library = {
 		Open = true;
-		Accent = Color3.fromRGB(169,112,255);
+		Accent = Color3.fromRGB(50,205,50);
         RiskColor = Color3.fromRGB(255,0,0);
 		Pages = {};
 		Sections = {};
@@ -1816,36 +1816,37 @@ do
 					Name = (Properties.Name or Properties.name) or Toggle.Name,
 					State = (
 						Properties.state
-							or Properties.State
-							or Properties.def
-							or Properties.Def
-							or Properties.default
-							or Properties.Default
-							or Color3.fromRGB(255, 0, 0)
+						or Properties.State
+						or Properties.def
+						or Properties.Def
+						or Properties.default
+						or Properties.Default
+						or Color3.fromRGB(255, 0, 0)
 					),
 					Alpha = (
 						Properties.alpha
-							or Properties.Alpha
-							or Properties.transparency
-							or Properties.Transparency
-							or 1
+						or Properties.Alpha
+						or Properties.transparency
+						or Properties.Transparency
+						or 1
 					),
 					Callback = (
 						Properties.callback
-							or Properties.Callback
-							or Properties.callBack
-							or Properties.CallBack
-							or function() end
+						or Properties.Callback
+						or Properties.callBack
+						or Properties.CallBack
+						or function() end
 					),
 					Flag = (
 						Properties.flag
-							or Properties.Flag
-							or Properties.pointer
-							or Properties.Pointer
-							or Library.NextFlag()
+						or Properties.Flag
+						or Properties.pointer
+						or Properties.Pointer
+						or Library.NextFlag()
 					),
 				}
-				-- // Functions
+			
+				-- Functions for Colorpicker
 				Toggle.Colorpickers = Toggle.Colorpickers + 1
 				local colorpickertypes = Library:NewPicker(
 					Colorpicker.Name,
@@ -1856,14 +1857,71 @@ do
 					Colorpicker.Flag,
 					Colorpicker.Callback
 				)
-
+			
 				function Colorpicker:Set(color)
 					colorpickertypes:set(color)
 				end
-
-				-- // Returning
+			
+				-- Function to add a second Colorpicker
+				function Colorpicker:AddAnotherColorpicker(Properties)
+					local Properties = Properties or {}
+					local NewColorpicker = {
+						Name = (Properties.Name or "Secondary Colorpicker"),
+						State = (
+							Properties.state
+							or Properties.State
+							or Properties.def
+							or Properties.Def
+							or Properties.default
+							or Properties.Default
+							or Color3.fromRGB(0, 255, 0) -- Default to green
+						),
+						Alpha = (
+							Properties.alpha
+							or Properties.Alpha
+							or Properties.transparency
+							or Properties.Transparency
+							or 1
+						),
+						Callback = (
+							Properties.callback
+							or Properties.Callback
+							or Properties.callBack
+							or Properties.CallBack
+							or function() end
+						),
+						Flag = (
+							Properties.flag
+							or Properties.Flag
+							or Properties.pointer
+							or Properties.Pointer
+							or Library.NextFlag()
+						),
+					}
+			
+					-- Increment colorpicker count and create the new color picker
+					Toggle.Colorpickers = Toggle.Colorpickers + 1
+					local Newcolorpickertypes = Library:NewPicker(
+						NewColorpicker.Name,
+						NewColorpicker.State,
+						NewColorpicker.Alpha,
+						NewToggle,
+						Toggle.Colorpickers,
+						NewColorpicker.Flag,
+						NewColorpicker.Callback
+					)
+			
+					function NewColorpicker:Set(color)
+						Newcolorpickertypes:Set(color)
+					end
+			
+					return NewColorpicker
+				end
+			
+				-- Returning the primary Colorpicker
 				return Colorpicker
 			end
+			
 
 			function Toggle:Keybind(Properties)
 				local Properties = Properties or {}
@@ -3320,6 +3378,8 @@ do
 			-- // Returning
 			return Colorpicker
 		end
+		--
+		
 		--
 		function Sections:Textbox(Properties)
 			local Properties = Properties or {}
