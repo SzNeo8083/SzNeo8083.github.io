@@ -50,7 +50,7 @@ local Library = {};
 do
 	Library = {
 		Open = true;
-		Accent = Color3.fromRGB(50, 205, 73);
+		Accent = Color3.fromRGB(169,112,255);
         RiskColor = Color3.fromRGB(255,0,0);
 		Pages = {};
 		Sections = {};
