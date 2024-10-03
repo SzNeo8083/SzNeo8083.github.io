@@ -2685,7 +2685,7 @@ do
 							table.insert(chosen, option)
 
 							local textchosen = {}
-							local cutobject = false
+							local cutobject = true
 
 							for _, opt in next, chosen do
 								table.insert(textchosen, opt)
@@ -2806,7 +2806,7 @@ do
 					end
 
 					local textchosen = {}
-					local cutobject = false
+					local cutobject = true
 
 					for _, opt in next, chosen do
 						table.insert(textchosen, opt)
