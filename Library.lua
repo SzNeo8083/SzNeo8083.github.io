@@ -2665,7 +2665,7 @@ do
 							table.remove(chosen, table.find(chosen, option))
 
 							local textchosen = {}
-							local cutobject = false
+							local cutobject = true
 
 							for _, opt in next, chosen do
 								table.insert(textchosen, opt)
