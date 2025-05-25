@@ -35,6 +35,36 @@ body, html {
   flex-direction: column;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(14, 14, 14, 0.808);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: clamp(12px, 10vw, 24px);
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+}
+
+.overlay img {
+  max-width: 120px;
+  margin-bottom: 20px;
+  user-select: none;
+  pointer-events: none
+}
+  
+.overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .scrolled-container {
   height: 100%;
   align-items: center;
