@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>niggers</title>
+  <title>drank.cc - home</title>
   <link rel="stylesheet" href="files/style.css" />
 </head>
 <body>
+  <div class="overlay" id="enter">
+    <img src="images/image2.png" alt="put logo here" />
+    Click to enter..
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="files/songg.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <div class="container">
-    <h1 class="main-title">
-      <span class="gradient">fentanyl</span><span class="shadow">.win</span>
-    </h1>
-
+    <h1 class="main-title"><span class="gradient">fentanyl</span><span class="shadow">.win</span></h1>
     <p class="type"> ... </p>
 
     <div class="buttons">
-      <button class="discord"">
-        
+      <button class="discord" onclick="window.open('https://discord.com/invite/fentwin', '_blank')">
         <img src="images/discord_image_2.png" alt="dc" class="button-icon" />
         Discord
       </button>
-      
+
       <button class="discord" onclick="scroll_to_second_container()">
         <img src="images/info_icon.png" alt="i" class="button-icon" />
         Read more
@@ -69,6 +74,20 @@
   <footer class="footer">
     <p>By using our service you agree to out Terms of Service</p>
   </footer>
+
+  <script>
+    const overlay = document.getElementById('enter');
+    overlay.addEventListener('click', () => {
+      overlay.classList.add('fade-out');
+      setTimeout(() => overlay.remove(), 500);
+
+      const music = document.getElementById('bg-music');
+      music.volume = 0.15;
+      music.play().catch(function(error) {
+        console.log('Autoplay blocked:', error);
+      });
+    });
+  </script>
 
   <script src="files/scroll.js"></script>
   <script src="files/info.js"></script>
