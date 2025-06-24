@@ -5,7 +5,7 @@ local ThemeManager = {} do
 
 	ThemeManager.Library = nil
 	ThemeManager.BuiltInThemes = {
-		["neohack"]             = { 1, httpService:JSONDecode('MainColor":"242424","AccentColor":"838dc7","OutlineColor":"373737","BackgroundColor":"1c1c1c","FontColor":"ffffff') },
+		["neohack"]             = { 1, httpService:JSONDecode('{"MainColor":"242424","AccentColor":"838dc7","OutlineColor":"373737","BackgroundColor":"1c1c1c","FontColor":"ffffff"}') },
 		['Default'] 		= { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1c1c1c","AccentColor":"0055ff","BackgroundColor":"141414","OutlineColor":"323232"}') },
 		['BBot'] 			= { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1e1e","AccentColor":"7e48a3","BackgroundColor":"232323","OutlineColor":"141414"}') },
 		['Fatality']		= { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1842","AccentColor":"c50754","BackgroundColor":"191335","OutlineColor":"3c355d"}') },
