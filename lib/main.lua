@@ -85,11 +85,12 @@ local Library = {
     AccentColor = Color3.fromRGB(131,141,199);
     OutlineColor = Color3.fromRGB(55,55,55);
     RiskColor = Color3.fromRGB(255, 50, 50),
+    ExperimentalColor = Color3.fromRGB(243,255,113),
 
     Black = Color3.new(0, 0, 0);
     Font = Enum.Font.Code,
-	CFont = UIFont,
-	FontSize = 12,
+    CFont = UIFont,
+    FontSize = 12,
 
     OpenedFrames = {};
     DependencyBoxes = {};
