@@ -1877,6 +1877,7 @@ do
             Callback = Info.Callback or function(Value) end;
             Addons = {},
             Risky = Info.Risky,
+            Experimental = info.Experimental,
         };
 
         local Groupbox = self;
@@ -1988,6 +1989,12 @@ do
             Library:RemoveFromRegistry(ToggleLabel)
             ToggleLabel.TextColor3 = Library.RiskColor
             Library:AddToRegistry(ToggleLabel, { TextColor3 = 'RiskColor' })
+        end
+
+        if Toggle.Experimental then
+            Library:RemoveFromRegistry(ToggleLabel)
+            ToggleLabel.TextColor3 = Library.ExperimentalColor
+            Library:AddToRegistry(ToggleLabel, { TextColor3 = 'ExperimentalColor' })
         end
 
         Toggle:Display();
