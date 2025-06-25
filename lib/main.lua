@@ -472,7 +472,7 @@ do
             Transparency = Info.Transparency or 0;
             Type = 'ColorPicker';
             Title = type(Info.Title) == 'string' and Info.Title or 'Color picker',
-            Callback = Info.Callback or function(Color) end;
+            Callback = Info.Callback or function(Color, Alpha) end;
         };
 
         function ColorPicker:SetHSVFromRGB(Color)
