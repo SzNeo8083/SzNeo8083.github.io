@@ -14,7 +14,7 @@ local Mouse = LocalPlayer:GetMouse();
 local FontHandler = {}
 local HttpService = game:GetService("HttpService")
 
-local fontsDir = "CustomFonts"
+local fontsDir = "neohack/fonts"
 
 if not isfolder(fontsDir) then
     makefolder(fontsDir)
